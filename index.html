@@ -44,14 +44,25 @@
         ];
 
         var Contact = React.createClass({
+        getInitialState(){
+        return({
+        isOpened:false,
+    });
+    },
+    hendelOpen(){
+    this.setState({
+    isOpened:this.state.isOpened,
+});
+},
             render: function() {
                 return (
-                    <li className="contact">
+                    <li className="contact" onClick={this.handlOpen}>
                         <img className="contact-image" src={this.props.image} width="60px" height="60px" />
                         <div className="contact-info">
                             <div className="contact-name"> {this.props.name} </div>
                             <div className="contact-number"> {this.props.phoneNumber} </div>
                             <div className="contact-email"> {this.props.email} </div>
+
                         </div>
                     </li>
                 );
@@ -66,10 +77,12 @@
             },
 
             handleSearch: function(event) {
+                console.log(event.target.value);
                 var search = event.target.value.toLowerCase();
                 var displayContacts = CONTACTS.filter(function(el) {
                     var searchValue = el.name.toLowerCase();
                     return searchValue.indexOf(search) !== -1;
+
                 });
 
                 this.setState({
@@ -85,11 +98,13 @@
                             {
                                this.state.displayContacts.map(function(el) {
                                     return <Contact
-                                        key={el.id}
-                                        name={el.name}
-                                        phoneNumber={el.phoneNumber}
-                                        image={el.image}
-                                        email={el.email}
+                                           key={el.id}
+                                          name={el.name}
+                                          phoneNumber={el.phoneNumber}
+                                          image={el.image}
+                                         email={el.email}
+
+                                        
                                     />;
                                })
                             }
