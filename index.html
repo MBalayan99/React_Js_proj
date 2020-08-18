@@ -49,14 +49,14 @@
         isOpened:false,
     });
     },
-    hendelOpen(){
-    this.setState({
-    isOpened:this.state.isOpened,
-});
-},
+    handleOpen() {
+        this.setState({
+            isOpened: !this.state.isOpened,
+        });
+    },
             render: function() {
                 return (
-                    <li className="contact" onClick={this.handlOpen}>
+                    <li className="contact" onClick={this.hendelOpen}>
                         <img className="contact-image" src={this.props.image} width="60px" height="60px" />
                         <div className="contact-info">
                             <div className="contact-name"> {this.props.name} </div>
